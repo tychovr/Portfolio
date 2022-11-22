@@ -1,0 +1,161 @@
+$container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
+
+$border-width: 4px;
+
+$btn-color: #4ec8b1;
+$btn2-color: rgb(78 200 177 / 0.5);
+$text-color: #d6d6ff;
+$light-text-color: rgb(214 214 255 / 0.5);
+$bg-color: #0a192f;
+$sec-color: #85ffc7;
+$sec2-color: rgb(133 255 199 / 0.5);
+
+.home-container {
+  background-color: $bg-color;
+  overflow-x: hidden;
+
+  .home-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    padding: 5vh;
+    font-family: "Source Sans Pro", arial, sans-serif;
+    font-weight: 300;
+    color: $text-color;
+    box-sizing: border-box;
+
+    .home {
+      display: flex;
+      width: 100%;
+      max-width: 80vw;
+      background: $bg-color;
+      padding: 5vh 5vh;
+      position: relative;
+      box-shadow: $container-shadow;
+
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .home-text {
+        float: left;
+        width: 100%;
+        padding: 5vh 5vh;
+        text-align: center;
+        z-index: 2;
+
+        h3 {
+          font-size: 1.5em;
+          font-weight: 400;
+          color: $text-color;
+        }
+
+        .home-typewriter {
+          font-size: 2em;
+          line-height: 1.5em;
+          font-weight: 600;
+          color: $text-color;
+        }
+
+        .home-links {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 1rem;
+
+          .home-link {
+            border-radius: 4px;
+            color: $btn-color;
+            font-size: 1.2rem;
+            font-weight: 500;
+            font-family: "Space Mono";
+            cursor: pointer;
+            padding: 0.25rem 0.25rem;
+
+            button {
+              color: $btn-color;
+              padding: 0.5rem 1rem;
+              border: 1px solid $btn-color;
+              border-radius: 4px;
+              font-size: 1.2rem;
+              font-weight: 500;
+              font-family: "Space Mono";
+              cursor: pointer;
+              transition: all 0.3s ease;
+              background-color: $bg-color;
+
+              li {
+                margin-right: 0.5rem;
+              }
+
+              &:hover {
+                background-color: $btn-color;
+                color: $bg-color;
+
+                li {
+                  color: $bg-color;
+                  background-color: $btn-color;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .home-container {
+    .home-content {
+      .home {
+        padding: 2vh 2vh;
+
+        .home-text {
+          padding: 2vh 2vh;
+
+          h3 {
+            font-size: 1em;
+          }
+
+          .home-typewriter {
+            font-size: 1.1em;
+          }
+
+          .home-links {
+            .home-link {
+              display: flex;
+              flex-direction: row;
+              font-size: 0.8rem;
+              background-color: $bg-color;
+
+              button {
+                padding: 0.25rem 0.5rem;
+                color: $btn-color;
+                border: 1px solid $btn-color;
+                border-radius: 4px;
+                font-size: 0.9rem;
+
+                &:hover {
+                  background-color: $btn-color;
+                  color: $bg-color;
+
+                  li {
+                    color: $bg-color;
+                    background-color: $btn-color;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

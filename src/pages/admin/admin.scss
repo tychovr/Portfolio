@@ -1,0 +1,138 @@
+$container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
+
+$gutter: 30px;
+$border-width: 4px;
+$dot-diameter: 0.5em;
+
+$btn-color: #4ec8b1;
+$btn2-color: rgb(78 200 177 / 0.5);
+$text-color: #d6d6ff;
+$light-text-color: rgb(214 214 255 / 0.5);
+$bg-color: #0a192f;
+$sec-color: #85ffc7;
+$sec2-color: rgb(133 255 199 / 0.5);
+
+.admin-container {
+  background-color: $bg-color;
+  overflow-x: hidden;
+
+  .admin-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    padding: 5vh 5vh;
+    font-family: "Source Sans Pro", arial, sans-serif;
+    font-weight: 300;
+    color: $text-color;
+    box-sizing: border-box;
+
+    .admin {
+      width: 100%;
+      max-width: 800px;
+      background: $bg-color;
+      padding: 5vh 5vh 2vh 5vh;
+      position: relative;
+      box-shadow: $container-shadow;
+
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .admin-projects,
+      .admin-experiences {
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          border-spacing: 0;
+          border: 1px solid $btn-color;
+
+          thead {
+            tr {
+              height: auto;
+              th {
+                background: $btn-color;
+                color: $text-color;
+                font-weight: 400;
+                padding: 10px;
+                text-align: left;
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              height: auto;
+
+              td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid $btn-color;
+              }
+            }
+          }
+
+          td {
+            padding: 15px;
+            text-align: left;
+            border-right: 1px solid $btn-color;
+
+            .action-buttons {
+              display: flex;
+              gap: 5px;
+              justify-content: center;
+
+              button {
+                background-color: $bg-color;
+                padding: 5px 10px;
+                border-radius: 5px;
+                border: 1px solid $btn-color;
+                color: $text-color;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+
+                &:hover {
+                  background: $sec-color;
+                  color: $bg-color;
+                }
+              }
+            }
+          }
+
+          .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            color: $text-color;
+            font-size: 0.8em;
+          }
+        }
+      }
+
+      .admin-add-button {
+        display: flex;
+        justify-content: center;
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+
+        button {
+          background-color: $bg-color;
+          padding: 5px 10px;
+          border-radius: 5px;
+          border: 1px solid $btn-color;
+          color: $text-color;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background: $sec-color;
+            color: $bg-color;
+          }
+        }
+      }
+    }
+  }
+}

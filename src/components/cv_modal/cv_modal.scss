@@ -1,0 +1,54 @@
+$btn-color: #4ec8b1;
+$btn2-color: rgb(78 200 177 / 0.5);
+$text-color: #d6d6ff;
+$bg-color: #0a192f;
+$sec-color: #85ffc7;
+$sec2-color: rgb(133 255 199 / 0.5);
+
+.cv_modal {
+  overflow-x: hidden;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+
+  .pdf_container {
+    overflow-x: hidden;
+    height: 600px;
+    width: 600px;
+    overscroll-behavior: contain;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+
+      &-track {
+        background: $bg-color;
+      }
+
+      &-thumb {
+        background: $text-color;
+        border-radius: 20px;
+        border: 3px solid $bg-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cv_modal {
+    margin-top: 40%;
+    margin-left: 10%;
+    height: 100%;
+
+    .pdf_container {
+      overflow: auto;
+      height: 80%;
+      width: 90%;
+      border-radius: 20px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

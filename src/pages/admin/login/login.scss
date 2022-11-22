@@ -1,0 +1,121 @@
+$container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
+
+$border-width: 4px;
+
+$btn-color: #4ec8b1;
+$btn2-color: rgb(78 200 177 / 0.5);
+$text-color: #d6d6ff;
+$light-text-color: rgb(214 214 255 / 0.5);
+$bg-color: #0a192f;
+$sec-color: #85ffc7;
+$sec2-color: rgb(133 255 199 / 0.5);
+
+.login-container {
+  overflow-x: hidden;
+
+  .login-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    margin: 0;
+    padding: 5vh;
+    font-family: "Source Sans Pro", arial, sans-serif;
+    font-weight: 300;
+    color: $text-color;
+    box-sizing: border-box;
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .login {
+      display: flex;
+      max-width: 800px;
+      background: $bg-color;
+      padding: 5vh 5vh;
+      position: relative;
+      box-shadow: $container-shadow;
+
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      .login-form {
+        float: right;
+        width: 66%;
+        z-index: 1;
+
+        h1 {
+          font-size: 1.5em;
+          font-weight: 400;
+          margin: 0 0 20px;
+          color: $text-color;
+        }
+
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          color: $text-color;
+        }
+
+        input,
+        textarea {
+          background-color: $bg-color;
+          margin-bottom: 1rem;
+          width: 20vw;
+          padding: 0.5rem;
+          border: 1px solid $btn-color;
+          border-radius: 4px;
+          box-sizing: border-box;
+          font-family: "Source Sans Pro", arial, sans-serif;
+          font-size: 1rem;
+          font-weight: 500;
+          color: $btn-color;
+          background-color: $bg-color;
+          transition: all 0.3s ease;
+          resize: none;
+
+          &:focus {
+            outline: none;
+            border-color: $btn-color;
+            color: $bg-color;
+            background-color: $btn-color;
+          }
+        }
+
+        button {
+          background-color: $bg-color;
+          color: $btn-color;
+          padding: 0.5rem 1rem;
+          border: 1px solid $btn-color;
+          border-radius: 4px;
+          font-size: 1.2rem;
+          font-weight: 500;
+          font-family: "Space Mono";
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: $btn-color;
+            color: $bg-color;
+          }
+
+          &:disabled {
+            color: $light-text-color;
+            border-color: $light-text-color;
+            cursor: not-allowed;
+          }
+        }
+
+        button:hover {
+          background-color: $sec-color;
+        }
+      }
+    }
+  }
+}
