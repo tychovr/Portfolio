@@ -168,6 +168,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
         .title {
           margin-bottom: 0.5em;
           width: 33%;
+          padding-right: 0;
           text-align: right;
           position: relative;
           font-size: 90%;
@@ -177,14 +178,14 @@ $sec2-color: rgb(133 255 199 / 0.5);
             font-size: 90%;
             
             p {
-              margin: 0;
               font-size: 100%;
               float: right;
+              margin-right: 5%;
             }
 
             .divider {
               margin: 0.5em 0;
-              width: 100%;
+              width: 90%;
               height: 1px;
               background: $btn-color;
             }
@@ -200,7 +201,6 @@ $sec2-color: rgb(133 255 199 / 0.5);
             border-radius: 100%;
             top: 15%;
             right: -2.5em;
-            z-index: 99;
           }
 
           h2 {
