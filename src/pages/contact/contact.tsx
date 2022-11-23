@@ -1,11 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/navbar/navbar";
 import { motion } from "framer-motion";
 import { useForm, ValidationError } from "@formspree/react";
 import "./contact.scss";
 
 const Contact = () => {
-  const [state, handleSubmit] = useForm("xrgdjalb");
+  const [email, setEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [state, handleSubmitForm] = useForm("xrgdjalb");
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    setEmail('');
+    setSubject('');
+    setMessage('');
+  };
 
   useEffect(() => {
     document.title = "Contact | Tycho's Portfolio";
@@ -46,14 +58,14 @@ const Contact = () => {
 
           <div className="contact-form">
             <form
-              onSubmit={handleSubmit}
+              onSubmit={(e) => {handleSubmitForm; handleSubmit(e)}}
               method="POST"
               encType="text/plain"
               className="contact-form"
             >
               <div className="contact-form-input">
                 <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" />
+                <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
 
                 <ValidationError
                   prefix="Email"
@@ -62,7 +74,7 @@ const Contact = () => {
                 />
 
                 <label htmlFor="subject">Subject</label>
-                <input type="text" name="subject" id="subject" />
+                <input type="text" name="subject" id="subject" onChange={(e) => setSubject(e.target.value)} value={subject}/>
 
                 <ValidationError
                   prefix="Subject"
@@ -71,7 +83,7 @@ const Contact = () => {
                 />
 
                 <label htmlFor="message">Message</label>
-                <textarea name="message" id="message" rows={9} cols={50} maxLength={200}>
+                <textarea name="message" id="message" rows={9} cols={50} maxLength={200} onChange={(e) => setMessage(e.target.value)} value={message}>
                 </textarea>
 
                 <ValidationError
