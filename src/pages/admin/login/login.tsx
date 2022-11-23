@@ -25,7 +25,7 @@ const Admin = () => {
     if (user) {
         navigate(-1);
     }
-  }, []);
+  }, [user, loading]);
 
   return (
     <div className="login-container">

@@ -65,7 +65,7 @@ const Admin = () => {
     if (loading) {
       navigate("/admin/login");
     }
-  }, []);
+  }, [user, loading]);
 
   return (
     <div className="admin-container">

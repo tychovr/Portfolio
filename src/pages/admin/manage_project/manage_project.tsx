@@ -123,7 +123,7 @@ const Manage_Project = () => {
     if (loading) {
       navigate("/admin/login");
     }
-  }, []);
+  }, [user, loading]);
 
   return (
     <div className="manage-project-container">

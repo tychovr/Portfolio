@@ -113,7 +113,7 @@ const Manage_Experience = () => {
     if (loading) {
       navigate("/admin/login");
     }
-  }, []);
+  }, [user, loading]);
 
   return (
     <div className="manage-experience-container">
