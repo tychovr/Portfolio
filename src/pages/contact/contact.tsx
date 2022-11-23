@@ -28,7 +28,7 @@ const Contact = () => {
               </div>
               <div className="contact-link">
                 <li className="fa fa-linkedin"></li>
-                <a href="https://www.linkedin.com/in/tycho-van-rosmalen-1b1b1b1b1/">
+                <a href="https://www.linkedin.com/in/tycho-van-rosmalen-9398031b2/">
                   LinkedIn
                 </a>
               </div>
