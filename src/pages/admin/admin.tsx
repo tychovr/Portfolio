@@ -59,13 +59,10 @@ const Admin = () => {
     getProjects();
     getExperiences();
 
-    if (user) {
-      return;
-    }
-    if (loading) {
+    if (!user) {
       navigate("/admin/login");
     }
-  }, [user, loading]);
+  }, [user]);
 
   return (
     <div className="admin-container">
@@ -90,8 +87,9 @@ const Admin = () => {
                     <td className="tags">
                       {project.tags.map((tag: any) => (
                         <div className="tag" key={tag}>
-                          <Tag
-                            color={tagColors[tag]}>{tag.toLocaleUpperCase()}</Tag>
+                          <Tag color={tagColors[tag]}>
+                            {tag.toLocaleUpperCase()}
+                          </Tag>
                         </div>
                       ))}
                     </td>
@@ -119,10 +117,7 @@ const Admin = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() => {
-                            updateProjectStatus(
-                              project.id,
-                              project.active
-                            );
+                            updateProjectStatus(project.id, project.active);
                             getProjects();
                           }}
                         >
@@ -176,7 +171,9 @@ const Admin = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() =>
-                            navigate("/admin/manage-experience/" + experience.id)
+                            navigate(
+                              "/admin/manage-experience/" + experience.id
+                            )
                           }
                         >
                           Edit
@@ -196,7 +193,7 @@ const Admin = () => {
                           onClick={() => {
                             updateExperienceStatus(
                               experience.id,
-                              experience.active,
+                              experience.active
                             );
                             getExperiences();
                           }}

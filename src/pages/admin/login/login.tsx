@@ -27,6 +27,11 @@ const Admin = () => {
     }
   }, [user, loading]);
 
+  useEffect(() => {
+    console.log(user);
+    console.log(auth.currentUser);
+  }, []);
+
   return (
     <div className="login-container">
       <Navbar />
