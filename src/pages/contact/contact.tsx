@@ -14,6 +14,8 @@ const Contact = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
+    handleSubmitForm(e);
+
     setEmail('');
     setSubject('');
     setMessage('');
@@ -58,7 +60,7 @@ const Contact = () => {
 
           <div className="contact-form">
             <form
-              onSubmit={(e) => {handleSubmitForm; handleSubmit(e)}}
+              onSubmit={handleSubmit}
               method="POST"
               encType="text/plain"
               className="contact-form"
