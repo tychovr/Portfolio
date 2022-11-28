@@ -18,12 +18,12 @@ function App() {
           <Route element={<Experience />} path="/experience" />
           <Route element={<Projects />} path="/projects" />
           <Route element={<Contact />} path="/contact" />
-          <Route element={<Admin />} path="/admin" />
+          {/* <Route element={<Admin />} path="/admin" />
           <Route element={<Login />} path="/admin/login" />
           <Route element={<Manage_Project />} path="/admin/manage-project" />
           <Route element={<Manage_Project />} path="/admin/manage-project/:id" />
           <Route element={<Manage_Experience />} path="/admin/manage-experience" />
-          <Route element={<Manage_Experience />} path="/admin/manage-experience/:id" />
+          <Route element={<Manage_Experience />} path="/admin/manage-experience/:id" /> */}
         </Route>
       </Routes>
     </BrowserRouter>
