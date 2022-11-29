@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getAllExperiences } from "../../components/database/experience";
-import Navbar from "../../components/navbar/navbar";
 import "./experience.scss";
 
 const Experience = () => {

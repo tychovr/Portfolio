@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { auth } from "../../../components/database/login";
-import Navbar from "../../../components/navbar/navbar";
 import {
   getExperience,
   updateExperience,
@@ -49,7 +48,7 @@ const Manage_Experience = () => {
       active: active,
     };
     await addExperience(experienceData);
-    // navigate("/admin");
+    navigate("/tychovanrosmalen/verysecreturl/admin");
   };
 
   const updateExperienceData = async (e: any) => {
@@ -68,7 +67,7 @@ const Manage_Experience = () => {
         active: active,
       };
       await updateExperience(id, experienceData);
-      navigate("/admin");
+      navigate("/tychovanrosmalen/verysecreturl/admin");
     } else {
       addExperienceData(experience);
     }
@@ -111,13 +110,12 @@ const Manage_Experience = () => {
       return;
     }
     if (loading) {
-      navigate("/admin/login");
+      navigate("/tychovanrosmalen/verysecreturl/admin/login");
     }
   }, [user, loading]);
 
   return (
     <div className="manage-experience-container">
-      <Navbar />
       <div className="manage-experience-content">
         <div className="timeline" key={experience.id}>
           <form onSubmit={updateExperienceData}>
@@ -201,7 +199,7 @@ const Manage_Experience = () => {
                       <button
                         onClick={() => {
                           deleteExperience(id);
-                          navigate("/admin");
+                          navigate("/tychovanrosmalen/verysecreturl/admin");
                         }}
                       >
                         Delete
@@ -213,7 +211,7 @@ const Manage_Experience = () => {
                       <button
                         onClick={() => {
                           updateExperienceStatus(id, experience.active);
-                          navigate("/admin");
+                          navigate("/tychovanrosmalen/verysecreturl/admin");
                         }}
                       >
                         {experience.active ? "Disable" : "Enable"}

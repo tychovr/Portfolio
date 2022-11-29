@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
 import { auth } from "../../../components/database/login";
-import Navbar from "../../../components/navbar/navbar";
 import Tag from "../../../components/tag/tag";
 import {
   getProject,
@@ -50,7 +49,7 @@ const Manage_Project = () => {
       active: active,
     };
     await addProject(projectData);
-    navigate("/admin");
+    navigate("/tychovanrosmalen/verysecreturl/admin");
   };
 
   const updateProjectData = async (e: any) => {
@@ -69,7 +68,7 @@ const Manage_Project = () => {
         active: active,
       };
       await updateProject(id, projectData);
-      navigate("/admin");
+      navigate("/tychovanrosmalen/verysecreturl/admin");
       
     } else {
       addProjectData(project);
@@ -121,13 +120,12 @@ const Manage_Project = () => {
       return;
     }
     if (loading) {
-      navigate("/admin/login");
+      navigate("/tychovanrosmalen/verysecreturl/admin/login");
     }
   }, [user, loading]);
 
   return (
     <div className="manage-project-container">
-      <Navbar />
       <div className="manage-project-content">
         <div className="manage-project">
           <div className="project" key={project.id}>
@@ -296,7 +294,7 @@ const Manage_Project = () => {
                       <button
                         onClick={() => {
                           deleteProject(id);
-                          navigate("/admin");
+                          navigate("/tychovanrosmalen/verysecreturl/admin");
                         }}
                       >
                         Delete
@@ -308,7 +306,7 @@ const Manage_Project = () => {
                       <button
                         onClick={() => {
                           updateProjectStatus(id, project.active);
-                          navigate("/admin");
+                          navigate("/tychovanrosmalen/verysecreturl/admin");
                         }}
                       >
                         {project.active ? "Disable" : "Enable"}

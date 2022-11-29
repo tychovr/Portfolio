@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import Navbar from "../../components/navbar/navbar";
 import Typewriter from "typewriter-effect";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";

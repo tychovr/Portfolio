@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { getAllProjects } from "../../components/database/project";
-import Navbar from "../../components/navbar/navbar";
 import Tag from "../../components/tag/tag";
 import "./projects.scss";
 
@@ -39,7 +38,6 @@ const Projects = () => {
 
   return (
     <div className="projects-container">
-      <Navbar />
       <div className="projects-content">
         <div className="projects">
           {data.map((project: any) => (

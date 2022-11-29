@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Navbar from "../../components/navbar/navbar";
 import { motion } from "framer-motion";
 import { useForm, ValidationError } from "@formspree/react";
 import "./contact.scss";

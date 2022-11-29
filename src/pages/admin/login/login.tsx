@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import Navbar from "../../../components/navbar/navbar";
 import { logIn, auth } from "../../../components/database/login";
 import "./login.scss";
 
@@ -27,14 +26,8 @@ const Admin = () => {
     }
   }, [user, loading]);
 
-  useEffect(() => {
-    console.log(user);
-    console.log(auth.currentUser);
-  }, []);
-
   return (
     <div className="login-container">
-      <Navbar />
       <div className="login-content">
         <div className="login">
           <div className="login-form">

@@ -3,7 +3,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../../components/database/login";
 import { motion } from "framer-motion";
-import Navbar from "../../components/navbar/navbar";
 import {
   getAllAdminProjects,
   updateProjectStatus,
@@ -60,13 +59,12 @@ const Admin = () => {
     getExperiences();
 
     if (!user) {
-      navigate("/admin/login");
+      navigate("/tychovanrosmalen/verysecreturl/admin/login");
     }
   }, [user]);
 
   return (
     <div className="admin-container">
-      <Navbar />
       <div className="admin-content">
         <div className="admin">
           <div className="admin-projects">
@@ -101,7 +99,7 @@ const Admin = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() =>
-                            navigate("/admin/manage-project/" + project.id)
+                            navigate("/tychovanrosmalen/verysecreturl/admin/manage-project/" + project.id)
                           }
                         >
                           Edit
@@ -134,7 +132,7 @@ const Admin = () => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => navigate("/admin/manage-project")}
+                onClick={() => navigate("/tychovanrosmalen/verysecreturl/admin/manage-project")}
               >
                 Add Project
               </motion.button>
@@ -172,7 +170,7 @@ const Admin = () => {
                           whileTap={{ scale: 0.9 }}
                           onClick={() =>
                             navigate(
-                              "/admin/manage-experience/" + experience.id
+                              "/tychovanrosmalen/verysecreturl/admin/manage-experience/" + experience.id
                             )
                           }
                         >
@@ -211,7 +209,7 @@ const Admin = () => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => navigate("/admin/manage-experience")}
+                onClick={() => navigate("/tychovanrosmalen/verysecreturl/admin/manage-experience")}
               >
                 Add Experience
               </motion.button>
