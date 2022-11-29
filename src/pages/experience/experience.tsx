@@ -20,7 +20,6 @@ const Experience = () => {
 
   return (
     <div className="experience-container">
-      <Navbar />
       <div className="experience-content">
         <div className="timeline">
           {data.map((experience: any) => (

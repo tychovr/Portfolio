@@ -18,7 +18,6 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <Navbar />
       <div className="home-content">
         <div className="home">
           <div className="home-text">
