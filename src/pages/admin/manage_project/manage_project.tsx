@@ -49,7 +49,7 @@ const Manage_Project = () => {
       active: active,
     };
     await addProject(projectData);
-    navigate("/tychovanrosmalen/verysecreturl/admin");
+    navigate("/admin");
   };
 
   const updateProjectData = async (e: any) => {
@@ -68,7 +68,7 @@ const Manage_Project = () => {
         active: active,
       };
       await updateProject(id, projectData);
-      navigate("/tychovanrosmalen/verysecreturl/admin");
+      navigate("/admin");
       
     } else {
       addProjectData(project);
@@ -120,7 +120,7 @@ const Manage_Project = () => {
       return;
     }
     if (loading) {
-      navigate("/tychovanrosmalen/verysecreturl/admin/login");
+      navigate("/admin/login");
     }
   }, [user, loading]);
 
@@ -294,7 +294,7 @@ const Manage_Project = () => {
                       <button
                         onClick={() => {
                           deleteProject(id);
-                          navigate("/tychovanrosmalen/verysecreturl/admin");
+                          navigate("/admin");
                         }}
                       >
                         Delete
@@ -306,7 +306,7 @@ const Manage_Project = () => {
                       <button
                         onClick={() => {
                           updateProjectStatus(id, project.active);
-                          navigate("/tychovanrosmalen/verysecreturl/admin");
+                          navigate("/admin");
                         }}
                       >
                         {project.active ? "Disable" : "Enable"}

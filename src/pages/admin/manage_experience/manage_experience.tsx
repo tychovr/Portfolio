@@ -48,7 +48,7 @@ const Manage_Experience = () => {
       active: active,
     };
     await addExperience(experienceData);
-    navigate("/tychovanrosmalen/verysecreturl/admin");
+    navigate("/admin");
   };
 
   const updateExperienceData = async (e: any) => {
@@ -67,7 +67,7 @@ const Manage_Experience = () => {
         active: active,
       };
       await updateExperience(id, experienceData);
-      navigate("/tychovanrosmalen/verysecreturl/admin");
+      navigate("/admin");
     } else {
       addExperienceData(experience);
     }
@@ -110,7 +110,7 @@ const Manage_Experience = () => {
       return;
     }
     if (loading) {
-      navigate("/tychovanrosmalen/verysecreturl/admin/login");
+      navigate("/admin/login");
     }
   }, [user, loading]);
 
@@ -199,7 +199,7 @@ const Manage_Experience = () => {
                       <button
                         onClick={() => {
                           deleteExperience(id);
-                          navigate("/tychovanrosmalen/verysecreturl/admin");
+                          navigate("/admin");
                         }}
                       >
                         Delete
@@ -211,7 +211,7 @@ const Manage_Experience = () => {
                       <button
                         onClick={() => {
                           updateExperienceStatus(id, experience.active);
-                          navigate("/tychovanrosmalen/verysecreturl/admin");
+                          navigate("/admin");
                         }}
                       >
                         {experience.active ? "Disable" : "Enable"}

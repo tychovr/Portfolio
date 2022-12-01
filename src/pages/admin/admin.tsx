@@ -59,7 +59,7 @@ const Admin = () => {
     getExperiences();
 
     if (!user) {
-      navigate("/tychovanrosmalen/verysecreturl/admin/login");
+      navigate("/admin/login");
     }
   }, [user]);
 
@@ -99,7 +99,7 @@ const Admin = () => {
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
                           onClick={() =>
-                            navigate("/tychovanrosmalen/verysecreturl/admin/manage-project/" + project.id)
+                            navigate("/admin/manage-project/" + project.id)
                           }
                         >
                           Edit
@@ -132,7 +132,7 @@ const Admin = () => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => navigate("/tychovanrosmalen/verysecreturl/admin/manage-project")}
+                onClick={() => navigate("/admin/manage-project")}
               >
                 Add Project
               </motion.button>
@@ -170,7 +170,7 @@ const Admin = () => {
                           whileTap={{ scale: 0.9 }}
                           onClick={() =>
                             navigate(
-                              "/tychovanrosmalen/verysecreturl/admin/manage-experience/" + experience.id
+                              "/admin/manage-experience/" + experience.id
                             )
                           }
                         >
@@ -209,7 +209,7 @@ const Admin = () => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={() => navigate("/tychovanrosmalen/verysecreturl/admin/manage-experience")}
+                onClick={() => navigate("/admin/manage-experience")}
               >
                 Add Experience
               </motion.button>
