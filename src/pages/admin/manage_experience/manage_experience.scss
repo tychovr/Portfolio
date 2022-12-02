@@ -142,29 +142,64 @@ $sec2-color: rgb(133 255 199 / 0.5);
                     }
 
                     .add-responsibility {
-                        form {
-                            display: flex;
-                            flex-direction: row;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
 
-                            input {
+                        input {
+                            border: none;
+                            background: transparent;
+                            outline: none;
+                            color: $light-text-color;
+                            border-bottom: 2px solid $btn-color;
+                            margin-left: 0.4rem;
+
+                            &::placeholder {
+                                color: $light-text-color;
+                            }
+                        }
+
+                        .add-responsibility-button {
+                            display: flex;
+                            border: 1px solid $btn-color;
+                            border-radius: 4px;
+                            color: $btn-color;
+                            font-size: 1.2rem;
+                            font-weight: 500;
+                            font-family: "Space Mono";
+                            cursor: pointer;
+                            margin-right: 0.5rem;
+                            margin-top: 0.5rem;
+                            margin-left: 0.5rem;
+                            
+                            button {
                                 border: none;
                                 background: transparent;
                                 outline: none;
-                                color: $light-text-color;
-                                border-bottom: 2px solid $btn-color;
-                                margin-left: .4rem;
+                                color: $btn-color;
+                                font-size: 1rem;
+                                font-weight: 1000;
+                                font-family: "Space Mono";
+                                cursor: pointer;
+                            }
 
-                                &::placeholder {
-                                    color: $light-text-color;
+                            &:hover {
+                                cursor: pointer;
+                                background-color: $btn-color;
+                                color: $bg-color;
+
+                                button {
+                                    background-color: $btn-color;
+                                    color: $bg-color;
                                 }
                             }
+                        }
 
-                            p {
-                                margin: 0;
-                                font-size: 1rem;
-                                font-weight: 200;
-                                color: $light-text-color;
-                            }
+                        p {
+                            margin: 0;
+                            font-size: 1rem;
+                            font-weight: 200;
+                            color: $light-text-color;
                         }
                     }
 
@@ -196,9 +231,10 @@ $sec2-color: rgb(133 255 199 / 0.5);
                         display: flex;
                         flex-direction: row;
                         align-items: center;
-                        padding-left: 2vh;
                         justify-content: center;
-        
+                        width: 100%;
+                        padding-right: 2rem;
+
                         .experience-button {
                             display: flex;
                             border: 1px solid $btn-color;
@@ -223,17 +259,17 @@ $sec2-color: rgb(133 255 199 / 0.5);
                                 cursor: pointer;
                                 padding: 0.25rem 0.25rem;
                             }
-        
+
                             &:hover {
                                 cursor: pointer;
                                 background-color: $btn-color;
                                 color: $bg-color;
-        
+
                                 button {
                                     background-color: $btn-color;
                                     color: $bg-color;
                                 }
-        
+
                                 li {
                                     background-color: $btn-color;
                                     color: $bg-color;
@@ -243,7 +279,6 @@ $sec2-color: rgb(133 255 199 / 0.5);
                     }
                 }
             }
-            
         }
     }
 }

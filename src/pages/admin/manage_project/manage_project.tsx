@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
-import { auth } from "../../../components/database/login";
 import Tag from "../../../components/tag/tag";
 import {
   getProject,
@@ -9,13 +7,19 @@ import {
   updateProject,
   updateProjectStatus,
   deleteProject,
-  checkIfProjectExists,
 } from "../../../components/database/project";
 import "./manage_project.scss";
 
 const Manage_Project = () => {
-  const [project, setProject] = useState<any>([]);
-
+  const [project, setProject] = useState<any>({
+    title: "",
+    about: "",
+    image: "",
+    github: "",
+    website: "",
+    tags: [],
+    active: true,
+  });
   const [title, setTitle] = useState("");
   const [about, setAbout] = useState("");
   const [image, setImage] = useState("");
@@ -24,7 +28,8 @@ const Manage_Project = () => {
   const [tags, setTags] = useState<any>([]);
   const [active, setActive] = useState(true);
 
-  const [loading, user] = useAuthState(auth);
+  const [user, setUser] = useState<any>();
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -37,49 +42,19 @@ const Manage_Project = () => {
   };
 
   const addProjectData = async (e: any) => {
-    e.preventDefault();
-
-    const projectData = {
-      title: title,
-      about: about,
-      image: image,
-      github: github,
-      website: website,
-      tags: tags,
-      active: active,
-    };
-    await addProject(projectData);
+    await addProject(project);
     navigate("/admin");
   };
 
   const updateProjectData = async (e: any) => {
     e.preventDefault();
 
-    const projectExists = await checkIfProjectExists(project.id);
-
-    if (projectExists) {
-      const projectData = {
-        title: title,
-        about: about,
-        image: image,
-        github: github,
-        website: website,
-        tags: tags,
-        active: active,
-      };
-      await updateProject(id, projectData);
+    if (id) {
+      await updateProject(id, project);
       navigate("/admin");
-      
     } else {
       addProjectData(project);
     }
-  };
-
-  const sortTags = (e: any) => {
-    const sortedTags = tags.sort((a: any, b: any) => {
-      return a - b;
-    });
-    setTags(sortedTags);
   };
 
   const setDefaultData = (project: any) => {
@@ -114,15 +89,40 @@ const Manage_Project = () => {
   useEffect(() => {
     document.title = "Manage Project | " + project.title;
 
-    getProjectData();
-
-    if (user) {
-      return;
+    if (id) {
+      getProjectData();
+      setDefaultData(project);
     }
-    if (loading) {
+
+    if (!id) {
+      setProject({
+        title: "Unnamed project",
+        about: "No description",
+        image: "",
+        github: "",
+        website: "",
+        tags: [],
+        active: true,
+      });
+    }
+
+    if (!localStorage.getItem("user")) {
       navigate("/admin/login");
     }
-  }, [user, loading]);
+  }, []);
+
+  useEffect(() => {
+    setProject({
+      title: title,
+      about: about,
+      image: image,
+      github: github,
+      website: website,
+      tags: tags,
+      active: active,
+    });
+    console.log(project);
+  }, [title, about, image, github, website, tags, active]);
 
   return (
     <div className="manage-project-container">
@@ -158,9 +158,7 @@ const Manage_Project = () => {
                     <div
                       className="project-tag"
                       onClick={() => {
-                        project.tags?.splice(index, 1);
-                        setTags(project.tags);
-                        setProject(project);
+                        setTags(tags.splice(index, 1));
                       }}
                       key={tag}
                     >
@@ -182,17 +180,9 @@ const Manage_Project = () => {
                           )
                         ) {
                           setTags([
-                            ...tags,
+                            ...project.tags,
                             e.target[e.target.selectedIndex].value,
                           ]);
-                          setProject((currentProject: { tags: any }) => ({
-                            ...currentProject,
-                            tags: [
-                              ...currentProject.tags,
-                              e.target[e.target.selectedIndex].value,
-                            ],
-                          }));
-                          sortTags(project.tags);
                         } else {
                           alert("Tag already exists");
                         }
@@ -310,17 +300,6 @@ const Manage_Project = () => {
                         }}
                       >
                         {project.active ? "Disable" : "Enable"}
-                      </button>
-                    </li>
-                  </div>
-                  <div className="project-button">
-                    <li className="fa fa-bug">
-                      <button
-                        onClick={() => {
-                          setDefaultData(project);
-                        }}
-                      >
-                        Solve Bug
                       </button>
                     </li>
                   </div>

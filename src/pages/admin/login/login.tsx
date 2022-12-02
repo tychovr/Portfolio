@@ -1,30 +1,27 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { logIn, auth } from "../../../components/database/login";
+import { logIn } from "../../../components/database/login";
 import "./login.scss";
 
 const Admin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
   const handleLogin = (e: any) => {
+    e.preventDefault();
     logIn(email, password);
+    navigate(-1);
   };
 
   useEffect(() => {
     document.title = "Admin Login";
 
-    if (loading) {
-        return;
+    if (localStorage.getItem("user")) {
+      navigate(-1);
     }
-    if (user) {
-        navigate(-1);
-    }
-  }, [user, loading]);
+  }, []);
 
   return (
     <div className="login-container">

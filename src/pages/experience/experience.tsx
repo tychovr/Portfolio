@@ -8,7 +8,6 @@ const Experience = () => {
   const getExperiences = async () => {
     const experiences = await getAllExperiences();
     setData(experiences);
-    console.log(experiences[0].responsibilities[0].id);
   };
 
   useEffect(() => {

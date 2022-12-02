@@ -1,109 +1,114 @@
-import app from "./connection.js";
-import {
-  doc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  getDocs,
-  getDoc,
-  getFirestore,
-  collection,
-  query,
-  where,
-  orderBy,
-} from "firebase/firestore";
-
-const db = getFirestore(app);
+import db from "./connection.js";
 
 const getAllProjects = async () => {
-  const q = query(
-    collection(db, "project"),
-    where("active", "==", true),
-    orderBy("title", "asc")
-  );
+  const { data, error } = await db
+    .from("projects")
+    .select()
+    .eq("active", true)
+    .order("title", { ascending: true });
 
-  const querySnapshot = await getDocs(q);
-  const projects = [];
+    if(error) {
+      console.log("Error getting projects: ", error);
+    }
 
-  querySnapshot.forEach((doc) => {
-    projects.push({ ...doc.data(), id: doc.id });
-  });
-  return projects;
+  return data;
 };
 
 const getAllAdminProjects = async () => {
-  const q = query(collection(db, "project"), orderBy("title", "asc"));
+  const { data, error } = await db
+    .from("projects")
+    .select()
+    .order("title", { ascending: true });
 
-  const querySnapshot = await getDocs(q);
-  const projects = [];
-  
-  querySnapshot.forEach((doc) => {
-    projects.push({ ...doc.data(), id: doc.id });
-  });
-  return projects;
+    if(error) {
+      console.log("Error getting projects: ", error);
+    }
+
+  return data;
 };
 
 const getProject = async (id) => {
-  const q = doc(db, "project", id);
+  const { data, error } = await db
+  .from("projects")
+  .select()
+  .eq("id", id);
 
-  const project = [];
-  const docSnap = await getDoc(q);
-
-  if (docSnap.exists()) {
-    project.push({ ...docSnap.data(), id: docSnap.id });
+  if (data) {
+    return data;
   } else {
-    console.log("No such document!");
+    console.log("No such project!");
   }
 
-    return project;
-};
-
-const checkIfProjectExists = async (id) => {
-  const q = doc(db, "project", id);
-
-  const docSnap = await getDoc(q);
-  return docSnap.exists();
+  if (error) {
+    console.log("Error getting project: ", error);
+  }
 };
 
 const addProject = async (project) => {
-  try {
-    await addDoc(collection(db, "project"), project);
-  } catch (e) {
-    console.error("Error adding project: ", e);
+  const { error } = await db
+      .from("projects")
+      .insert([
+        {
+          title: project.title,
+          about: project.about,
+          image: project.image,
+          github: project.github,
+          website: project.website,
+          tags: project.tags,
+          active: project.active,
+        },
+      ])
+      .single();
+
+  if (error) {
+    console.error("Error adding project: ", error);
   }
 };
 
 const updateProject = async (id, projectData) => {
-  
-  try {
-    await updateDoc(doc(db, "project", id), {
-      title: projectData.title,
-      about: projectData.about,
-      image: projectData.image,
-      github: projectData.github,
-      website: projectData.website,
-      tags: projectData.tags,
-    });
-  } catch (e) {
-    console.error("Error updating project: ", e);
+    const { error } = await db
+      .from("projects")
+      .update([
+        {
+          title: projectData.title,
+          about: projectData.about,
+          image: projectData.image,
+          github: projectData.github,
+          website: projectData.website,
+          tags: projectData.tags,
+          active: projectData.active,
+        },
+      ])
+      .eq("id", id)
+      .single();
+  if (error) {
+    console.error("Error updating project: ", error);
   }
 };
 
 const updateProjectStatus = async (id, active) => {
-  try {
-    await updateDoc(doc(db, "project", id), {
-      active: !active,
-    });
-  } catch (e) {
-    console.error("Error updating project: ", e);
+    const { error } = await db
+      .from("projects")
+      .update([
+        {
+          active: active,
+        },
+      ])
+      .eq("id", id)
+      .single();
+  if (error) {
+    console.error("Error updating project: ", error);
   }
 };
 
 const deleteProject = async (id) => {
-  try {
-    await deleteDoc(doc(db, "projects", id));
-  } catch (e) {
-    console.error("Error deleting project: ", e);
+  const { error } = await db
+      .from("projects")
+      .delete()
+      .eq("id", id)
+      .single();
+ if (error) {
+    console.error("Error deleting project: ", error);
   }
 };
 
@@ -111,7 +116,6 @@ export {
   getAllProjects,
   getAllAdminProjects,
   getProject,
-  checkIfProjectExists,
   addProject,
   updateProject,
   updateProjectStatus,

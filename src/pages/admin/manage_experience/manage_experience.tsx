@@ -1,30 +1,33 @@
 import { useState, useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate, useParams } from "react-router-dom";
-import { auth } from "../../../components/database/login";
 import {
   getExperience,
   updateExperience,
   updateExperienceStatus,
   deleteExperience,
-  checkIfExperienceExists,
   addExperience,
 } from "../../../components/database/experience";
 import "./manage_experience.scss";
 
 const Manage_Experience = () => {
-  const [experience, setExperience] = useState<any>([]);
+  const [experience, setExperience] = useState<any>({
+    title: "",
+    date_started: "",
+    date_ended: "",
+    about: "",
+    responsibilities: [],
+    manualOrder: 0,
+    active: true,
+  });
 
   const [title, setTitle] = useState<any>("");
   const [dateStarted, setDateStarted] = useState<any>("");
   const [dateEnded, setDateEnded] = useState<any>("");
   const [about, setAbout] = useState<any>("");
   const [responsibilities, setResponsibilities] = useState<any>([]);
-  const [active, setActive] = useState<any>("");
+  const [active, setActive] = useState<any>(true);
 
   const [responsibility, setResponsibility] = useState<any>("");
-
-  const [loading, user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -37,59 +40,19 @@ const Manage_Experience = () => {
   };
 
   const addExperienceData = async (e: any) => {
-    e.preventDefault();
-
-    const experienceData = {
-      title: title,
-      dateStarted: dateStarted,
-      dateEnded: dateEnded,
-      about: about,
-      responsibilities: responsibilities,
-      active: active,
-    };
-    await addExperience(experienceData);
+    await addExperience(experience);
     navigate("/admin");
   };
 
   const updateExperienceData = async (e: any) => {
     e.preventDefault();
 
-    const experienceExists = await checkIfExperienceExists(experience.id);
-
-    if (experienceExists) {
-        
-      const experienceData = {
-        title: title,
-        date_started: dateStarted,
-        date_ended: dateEnded,
-        about: about,
-        responsibilities: responsibilities,
-        active: active,
-      };
-      await updateExperience(id, experienceData);
+    if (id) {
+      await updateExperience(id, experience);
       navigate("/admin");
     } else {
       addExperienceData(experience);
     }
-  };
-
-  const addResponsibility = (e: any) => {
-    e.preventDefault();
-
-    setResponsibilities([...responsibilities, responsibility]);
-
-    setExperience((currentExperience: { responsibilities: any }) => ({
-      ...currentExperience,
-      responsibilities: [...currentExperience.responsibilities, responsibility],
-    }));
-    sortResponsibilities(experience.responsibilities);
-  };
-
-  const sortResponsibilities = (e: any) => {
-    const sortedResponsibilities = responsibilities.sort((a: any, b: any) => {
-      return a - b;
-    });
-    setResponsibilities(sortedResponsibilities);
   };
 
   const setDefaultData = (experience: any) => {
@@ -104,15 +67,38 @@ const Manage_Experience = () => {
   useEffect(() => {
     document.title = "Manage Experience | " + experience.title;
 
-    getExperienceData();
-
-    if (user) {
-      return;
+    if (id) {
+      getExperienceData();
+      setDefaultData(experience);
     }
-    if (loading) {
+
+    if (!id) {
+      setExperience({
+        title: "Unnamed experience",
+        date_started: "",
+        date_ended: "",
+        about: "No description",
+        responsibilities: [],
+        manualOrder: 0,
+        active: true,
+      });
+    }
+
+    if (!localStorage.getItem("user")) {
       navigate("/admin/login");
     }
-  }, [user, loading]);
+  }, []);
+
+  useEffect(() => {
+    setExperience({
+      title: title,
+      date_started: dateStarted,
+      date_ended: dateEnded,
+      about: about,
+      responsibilities: responsibilities,
+      active: active,
+    });
+  }, [title, dateStarted, dateEnded, about, responsibilities, active]);
 
   return (
     <div className="manage-experience-container">
@@ -169,14 +155,35 @@ const Manage_Experience = () => {
                     )
                   )}
                   <div className="add-responsibility">
-                    <form onSubmit={addResponsibility}>
-                      <p>- </p>
-                      <input
-                        type="text"
-                        placeholder="Add responsibility"
-                        onChange={(e) => setResponsibility(e.target.value)}
-                      />
-                    </form>
+                    <p>- </p>
+                    <input
+                      type="text"
+                      placeholder="Add responsibility"
+                      onChange={(e) => setResponsibility(e.target.value)}
+                    />
+                    <div className="add-responsibility-button">
+                      <button
+                        onClick={(e: any) => {
+                          e.preventDefault();
+
+                          if (
+                            !experience.responsibilities?.includes(
+                              responsibility
+                            )
+                          ) {
+                            setResponsibilities([
+                              ...experience.responsibilities,
+                              responsibility,
+                            ]);
+                          } else {
+                            console.log(experience.responsibilities);
+                            alert("Responsibility already exists");
+                          }
+                        }}
+                      >
+                        +
+                      </button>
+                    </div>
                   </div>
                 </ul>
 
@@ -215,17 +222,6 @@ const Manage_Experience = () => {
                         }}
                       >
                         {experience.active ? "Disable" : "Enable"}
-                      </button>
-                    </li>
-                  </div>
-                  <div className="experience-button">
-                    <li className="fa fa-bug">
-                      <button
-                        onClick={() => {
-                          setDefaultData(experience);
-                        }}
-                      >
-                        Solve Bug
                       </button>
                     </li>
                   </div>

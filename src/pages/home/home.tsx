@@ -4,11 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./home.scss";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../../components/database/login";
 
 const Home = () => {
-  const [user] = useAuthState(auth);
-
   const navigate = useNavigate();
 
   useEffect(() => {

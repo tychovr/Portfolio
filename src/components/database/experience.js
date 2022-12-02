@@ -1,108 +1,110 @@
-import {
-  addDoc,
-  updateDoc,
-  deleteDoc,
-  doc,
-  collection,
-  query,
-  where,
-  getFirestore,
-  orderBy,
-  getDocs,
-  getDoc,
-} from "firebase/firestore";
-import app from "./connection.js";
-
-const db = getFirestore(app);
+import db from "./connection.js";
 
 const getAllExperiences = async () => {
-  const q = query(
-    collection(db, "experience"),
-    where("active", "==", true),
-    orderBy("manualOrder", "asc")
-  );
+  const { data, error } = await db
+    .from("experiences")
+    .select()
+    .eq("active", true)
+    .order("manualOrder", { ascending: true });
 
-  const querySnapshot = await getDocs(q);
-  const experiences = [];
+  if (error) {
+    console.log("Error getting experiences: ", error);
+  }
 
-  querySnapshot.forEach((doc) => {
-    experiences.push({ ...doc.data(), id: doc.id });
-  });
-  return experiences;
+  return data;
 };
 
 const getAllAdminExperiences = async () => {
-  const q = query(collection(db, "experience"), orderBy("manualOrder", "asc"));
+  const { data, error } = await db
+    .from("experiences")
+    .select()
+    .order("manualOrder", { ascending: true });
 
-  const querySnapshot = await getDocs(q);
-  const experiences = [];
+  if (error) {
+    console.log("Error getting experiences: ", error);
+  }
 
-  querySnapshot.forEach((doc) => {
-    experiences.push({ ...doc.data(), id: doc.id });
-  });
-  return experiences;
-};
-
-const checkIfExperienceExists = async (id) => {
-  const q = doc(db, "experience", id);
-
-  const docSnap = await getDoc(q);
-  return docSnap.exists();
+  return data;
 };
 
 const getExperience = async (id) => {
-  const q = doc(db, "experience", id);
+  const { data, error } = await db
+    .from("experiences")
+    .select()
+    .eq("id", id);
 
-  const experience = [];
-  const docSnap = await getDoc(q);
-
-  if(docSnap.exists()) {
-    experience.push({ ...docSnap.data(), id: docSnap.id });
+  if (data) {
+    return data;
   } else {
-    console.log("No such document!");
+    console.log("No such experience!");
   }
 
-  return experience;
+  if (error) {
+    console.log("Error getting experience: ", error);
+  }
 };
 
 const addExperience = async (experience) => {
-  try {
-    await addDoc(collection(db, "experience"), experience);
-  } catch (e) {
-    console.error("Error adding experience: ", e);
+  const { error } = await db
+    .from("experiences")
+    .insert([
+      {
+        title: experience.title,
+        about: experience.about,
+        date_started: experience.date_started,
+        date_ended: experience.date_ended,
+        responsibilities: experience.responsibilities,
+        manualOrder: experience.manualOrder,
+        active: experience.active,
+      },
+    ])
+    .single();
+  if (error) {
+    console.error("Error adding experience: ", error);
   }
 };
 
 const updateExperience = async (id, experienceData) => {
-  try {
-    await updateDoc(doc(db, "experience", id), {
-      title: experienceData.title,
-      about: experienceData.about,
-      date_started: experienceData.date_started,
-      date_ended: experienceData.date_ended,
-      responsibilities: experienceData.responsibilities,
-      manualOrder: experienceData.manualOrder,
-    });
-  } catch (e) {
-    console.error("Error updating experience: ", e);
+  const { error } = await db
+    .from("experiences")
+    .update([
+      {
+        title: experienceData.title,
+        about: experienceData.about,
+        date_started: experienceData.date_started,
+        date_ended: experienceData.date_ended,
+        responsibilities: experienceData.responsibilities,
+        manualOrder: experienceData.manualOrder,
+        active: experienceData.active,
+      },
+    ])
+    .eq("id", id)
+    .single();
+  if (error) {
+    console.error("Error updating experience: ", error);
   }
 };
 
 const updateExperienceStatus = async (id, active) => {
-  try {
-    await updateDoc(doc(db, "experience", id), {
-      active: !active,
-    });
-  } catch (e) {
-    console.error("Error updating experience status: ", e);
+  const { error } = await db
+    .from("experiences")
+    .update([
+      {
+        active: active,
+      },
+    ])
+    .eq("id", id)
+    .single();
+  if (error) {
+    console.error("Error updating experience status: ", error);
   }
 };
 
 const deleteExperience = async (id) => {
-  try {
-    await deleteDoc(doc(db, "experience", id));
-  } catch (e) {
-    console.error("Error deleting experience: ", e);
+  const { error } = await db.from("experiences").delete().eq("id", id).single();
+
+  if (error) {
+    console.error("Error deleting experience: ", error);
   }
 };
 
@@ -110,7 +112,6 @@ export {
   getAllExperiences,
   getAllAdminExperiences,
   getExperience,
-  checkIfExperienceExists,
   addExperience,
   updateExperience,
   updateExperienceStatus,

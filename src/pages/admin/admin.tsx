@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../components/database/login";
 import { motion } from "framer-motion";
 import {
   getAllAdminProjects,
@@ -19,18 +18,19 @@ import "./admin.scss";
 const Admin = () => {
   const [allProjects, setAllProjects] = useState<any>([]);
   const [allExperiences, setAllExperiences] = useState<any>([]);
-  const [loading, user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
   const getProjects = async () => {
     const projects = await getAllAdminProjects();
     setAllProjects(projects);
+    console.log(projects);
   };
 
   const getExperiences = async () => {
     const experiences = await getAllAdminExperiences();
     setAllExperiences(experiences);
+    console.log(experiences);
   };
 
   const tagColors: any = {
@@ -58,10 +58,10 @@ const Admin = () => {
     getProjects();
     getExperiences();
 
-    if (!user) {
+    if (!localStorage.getItem("user")) {
       navigate("/admin/login");
     }
-  }, [user]);
+  }, []);
 
   return (
     <div className="admin-container">
@@ -85,9 +85,7 @@ const Admin = () => {
                     <td className="tags">
                       {project.tags.map((tag: any) => (
                         <div className="tag" key={tag}>
-                          <Tag color={tagColors[tag]}>
-                            {tag.toLocaleUpperCase()}
-                          </Tag>
+                          <Tag color={tagColors[tag]}>{tag}</Tag>
                         </div>
                       ))}
                     </td>
@@ -157,11 +155,13 @@ const Admin = () => {
                     <td>{experience.date_started}</td>
                     <td>{experience.date_ended}</td>
                     <td>
-                      {experience.responsibilities.map(
-                        (responsibility: any) => (
-                          <li>{responsibility}</li>
-                        )
-                      )}
+                      <ul>
+                        {experience.responsibilities.map(
+                          (responsibility: any) => (
+                            <li>{responsibility}</li>
+                          )
+                        )}
+                      </ul>
                     </td>
                     <td>
                       <div className="action-buttons">
