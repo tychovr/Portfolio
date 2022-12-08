@@ -2,7 +2,7 @@ $container-shadow: 0.5rem 0.5rem 2rem 0 rgba(black, 0.2);
 
 $gutter: 30px;
 $border-width: 4px;
-$dot-diameter: 1em;
+$dot-diameter: 0.5em;
 
 $btn-color: #4ec8b1;
 $btn2-color: rgb(78 200 177 / 0.5);
@@ -75,7 +75,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
           background-color: $bg-color;
           border-radius: 100%;
           top: 15%;
-          right: -2.5em;
+          right: -.7vw;
           z-index: 2;
         }
 

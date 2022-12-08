@@ -5,10 +5,13 @@ $bg-color: #0a192f;
 $sec-color: #85ffc7;
 $sec2-color: rgb(133 255 199 / 0.5);
 
+* {
+  font-family: "Space Mono";
+}
+
 body {
   background-color: $bg-color;
   overflow-x: hidden;
-  font-family: "Space Mono";
 
   &::-webkit-scrollbar {
     width: 12px;
