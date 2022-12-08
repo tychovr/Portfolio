@@ -23,13 +23,11 @@ const Admin = () => {
   const getProjects = async () => {
     const projects = await getAllAdminProjects();
     setAllProjects(projects);
-    console.log(projects);
   };
 
   const getExperiences = async () => {
     const experiences = await getAllAdminExperiences();
     setAllExperiences(experiences);
-    console.log(experiences);
   };
 
   const tagColors: any = {
