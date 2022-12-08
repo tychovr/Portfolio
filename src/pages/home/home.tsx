@@ -3,7 +3,6 @@ import Typewriter from "typewriter-effect";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./home.scss";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const Home = () => {
   const navigate = useNavigate();

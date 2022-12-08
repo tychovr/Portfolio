@@ -6,8 +6,8 @@ import Projects from "./pages/projects/projects";
 import Contact from "./pages/contact/contact";
 import Admin from "./pages/admin/admin";
 import Login from "./pages/admin/login/login";
-import Manage_Project from "./pages/admin/manage_project/manage_project";
-import Manage_Experience from "./pages/admin/manage_experience/manage_experience";
+import ManageProject from "./pages/admin/manage_project/manage_project";
+import ManageExperience from "./pages/admin/manage_experience/manage_experience";
 import NotFound from "./pages/notfound/notfound";
 import "./App.css";
 
@@ -22,10 +22,10 @@ function App() {
           <Route element={<Contact />} path="/contact" />
           <Route element={<Admin />} path="/admin" />
           <Route element={<Login />} path="/admin/login" />
-          <Route element={<Manage_Project />} path="/admin/manage-project" />
-          <Route element={<Manage_Project />} path="/admin/manage-project/:id" />
-          <Route element={<Manage_Experience />} path="/admin/manage-experience" />
-          <Route element={<Manage_Experience />} path="/admin/manage-experience/:id" />
+          <Route element={<ManageProject />} path="/admin/manage-project" />
+          <Route element={<ManageProject />} path="/admin/manage-project/:id" />
+          <Route element={<ManageExperience />} path="/admin/manage-experience" />
+          <Route element={<ManageExperience />} path="/admin/manage-experience/:id" />
           <Route element={<NotFound />} path="*" />
         </Route>
       </Routes>

@@ -13,12 +13,12 @@ const TagStyle = styled.p`
   font-size: 0.75rem;
 `;
 
-type Tag = {
+type TagInfo = {
   children: string;
   color: any;
 };
 
-const Tag = ({ children, color}: Tag) => {
+const Tag = ({ children, color}: TagInfo) => {
   return (
       <TagStyle color={color}>{children}</TagStyle>
   );

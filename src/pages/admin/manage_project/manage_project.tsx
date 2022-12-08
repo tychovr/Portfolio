@@ -10,7 +10,7 @@ import {
 } from "../../../components/database/project";
 import "./manage_project.scss";
 
-const Manage_Project = () => {
+const ManageProject = () => {
   const [project, setProject] = useState<any>({
     title: "",
     about: "",
@@ -27,9 +27,6 @@ const Manage_Project = () => {
   const [website, setWebsite] = useState("");
   const [tags, setTags] = useState<any>([]);
   const [active, setActive] = useState(true);
-
-  const [user, setUser] = useState<any>();
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -215,7 +212,7 @@ const Manage_Project = () => {
                   {project.github !== "N/A" ? (
                     <div className="project-link">
                       <li className="fa fa-github"></li>
-                      <a href={project.github} target="_blank">
+                      <a href={project.github} target="_blank" rel="norefferer">
                         Github
                       </a>
                     </div>
@@ -223,7 +220,7 @@ const Manage_Project = () => {
                   {project.website !== "N/A" ? (
                     <div className="project-link">
                       <li className="fa fa-globe"></li>
-                      <a href={project.website} target="_blank">
+                      <a href={project.website} target="_blank" rel="norefferer">
                         Website
                       </a>
                     </div>
@@ -313,4 +310,4 @@ const Manage_Project = () => {
   );
 };
 
-export default Manage_Project;
+export default ManageProject;

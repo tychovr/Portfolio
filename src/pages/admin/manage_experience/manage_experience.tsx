@@ -9,7 +9,7 @@ import {
 } from "../../../components/database/experience";
 import "./manage_experience.scss";
 
-const Manage_Experience = () => {
+const ManageExperience = () => {
   const [experience, setExperience] = useState<any>({
     title: "",
     date_started: "",
@@ -235,4 +235,4 @@ const Manage_Experience = () => {
   );
 };
 
-export default Manage_Experience;
+export default ManageExperience;

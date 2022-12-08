@@ -65,7 +65,7 @@ const Projects = () => {
                 <div className="project-link">
                   <li className="fa fa-github"></li>
                   {project.github !== "N/A" ? (
-                    <a href={project.github} target="_blank">
+                    <a href={project.github} target="_blank" rel="norefferer">
                       Github
                     </a>
                   ) : null}
@@ -73,7 +73,7 @@ const Projects = () => {
                 {project.website !== "N/A" ? (
                   <div className="project-link">
                     <li className="fa fa-globe"></li>
-                    <a href={project.website} target="_blank">
+                    <a href={project.website} target="_blank" rel="norefferer">
                       Website
                     </a>
                   </div>
