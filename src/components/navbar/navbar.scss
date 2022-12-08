@@ -8,6 +8,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
 body {
   background-color: $bg-color;
   overflow-x: hidden;
+  font-family: "Space Mono";
 
   &::-webkit-scrollbar {
     width: 12px;
