@@ -22,7 +22,6 @@ $sec2-color: rgb(133 255 199 / 0.5);
     width: 100vw;
     margin: 0;
     padding: 5vh;
-    font-family: "Source Sans Pro", arial, sans-serif;
     font-weight: 300;
     color: $text-color;
     box-sizing: border-box;
@@ -58,7 +57,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
       position: relative;
 
       .title {
-        margin-bottom: 0.5em;
+        font-size: 125%;
         right: 2em;
         float: left;
         width: 33%;
@@ -75,7 +74,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
           background-color: $bg-color;
           border-radius: 100%;
           top: 15%;
-          right: -.7vw;
+          right: -1.25vw;
           z-index: 2;
         }
 
@@ -86,22 +85,25 @@ $sec2-color: rgb(133 255 199 / 0.5);
 
         .date {
           float: right;
+          font-size: 75%;
           
           p {
-            margin: 0;
-            font-size: 100%;
+            margin-top: 0vh;
             float: left;
             margin-left: 0.5em;
           }
         }
       }
+
       .body {
-        margin: 1em -2em 3em;
+        margin: .5em -2em;
         float: right;
         width: 66%;
+        padding-left: $gutter;
+        position: relative;
 
         p {
-          line-height: 1.4em;
+          font-size: 150%;
 
           &:first-child {
             margin-top: 0;
