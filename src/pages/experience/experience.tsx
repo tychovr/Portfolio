@@ -31,7 +31,7 @@ const Experience = () => {
                 </div>
               </div>
               <div className="body">
-                <p>{experience.description}</p>
+                <p>{experience.about}</p>
 
                 <p>My responsibilities include:</p>
                 <ul>
