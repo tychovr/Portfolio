@@ -30,7 +30,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
       width: 100%;
       max-width: 800px;
       background: $bg-color;
-      padding: 100px 50px;
+      padding: 50px;
       position: relative;
       box-shadow: $container-shadow;
 
@@ -52,6 +52,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
     }
 
     .entry {
+      padding: 1em 0;
       clear: both;
       text-align: left;
       position: relative;
@@ -74,7 +75,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
           background-color: $bg-color;
           border-radius: 100%;
           top: 15%;
-          right: -1.25vw;
+          left: 100%;
           z-index: 2;
         }
 
@@ -84,9 +85,10 @@ $sec2-color: rgb(133 255 199 / 0.5);
         }
 
         .date {
+          display: flex;
           float: right;
           font-size: 75%;
-          
+
           p {
             margin-top: 0vh;
             float: left;
@@ -96,14 +98,19 @@ $sec2-color: rgb(133 255 199 / 0.5);
       }
 
       .body {
-        margin: .5em -2em;
+        margin: 1.5em -2em;
         float: right;
         width: 66%;
         padding-left: $gutter;
         position: relative;
 
+        .about {
+          font-size: 100%;
+        }
+
         p {
           font-size: 150%;
+          font-weight: 600;
 
           &:first-child {
             margin-top: 0;
@@ -126,7 +133,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 576px) and (max-width: 900px) {
   .experience-container {
     overflow-x: hidden;
 
@@ -144,9 +151,9 @@ $sec2-color: rgb(133 255 199 / 0.5);
 
       .timeline {
         width: 100%;
-        max-width: 800px;
+        max-width: 50%;
         background: $bg-color;
-        padding: 100px 50px;
+        padding: 50px;
         position: relative;
         box-shadow: $container-shadow;
 
@@ -174,22 +181,29 @@ $sec2-color: rgb(133 255 199 / 0.5);
           text-align: right;
           position: relative;
           font-size: 90%;
-          
+
           .date {
             float: right;
             font-size: 90%;
-            
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
             p {
               font-size: 100%;
               float: right;
               margin-right: 5%;
             }
 
+            .divider-nonmobile {
+              display: none;
+            }
+
             .divider {
-              margin: 0.5em 0;
-              width: 90%;
+              width: 50%;
               height: 1px;
               background: $btn-color;
+              margin: 0 0 1em 50%;
             }
           }
 
@@ -202,7 +216,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
             background-color: $bg-color;
             border-radius: 100%;
             top: 15%;
-            right: -2.5em;
+            left: calc(100% + 21px);
           }
 
           h2 {
@@ -220,7 +234,8 @@ $sec2-color: rgb(133 255 199 / 0.5);
           width: 66%;
 
           p {
-            line-height: 1.4em;X
+            line-height: 1.4em;
+            font-size: 100%;
 
             &:first-child {
               margin-top: 0;
@@ -240,6 +255,30 @@ $sec2-color: rgb(133 255 199 / 0.5);
           }
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .experience-container {
+    display: flex;
+    margin-top: 45%;
+
+    .experience-content {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    h2 {
+      font-size: 150%;
+      color: $text-color;
+      width: 80vw;
+      margin-left: 10vw;
     }
   }
 }
