@@ -84,6 +84,7 @@ body {
       float: right;
       z-index: 1;
       transition: 0.5s;
+      margin-bottom: 1rem;
 
       li {
         list-style-type: none;
@@ -148,7 +149,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 825px) {
   .navbar-container {
     * {
       margin: 0;
