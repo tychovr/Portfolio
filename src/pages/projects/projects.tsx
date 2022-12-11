@@ -54,31 +54,39 @@ const Projects = () => {
                 <p>{project.about}</p>
               </div>
 
-              <div className="project-tags">
-                {project.tags.map((tag: string) => (
-                  <div className="project-tag" key={tag}>
-                    <Tag color={tagColors[tag]}>{tag.toLocaleUpperCase()}</Tag>
-                  </div>
-                ))}
-              </div>
+              <div className="bottom">
+                <div className="project-tags">
+                  {project.tags.map((tag: string) => (
+                    <div className="project-tag" key={tag}>
+                      <Tag color={tagColors[tag]}>
+                        {tag.toLocaleUpperCase()}
+                      </Tag>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="project-links">
-                <div className="project-link">
-                  <li className="fa fa-github"></li>
-                  {project.github !== "N/A" ? (
-                    <a href={project.github} target="_blank" rel="norefferer">
-                      Github
-                    </a>
+                <div className="project-links">
+                  <div className="project-link">
+                    <li className="fa fa-github"></li>
+                    {project.github !== "N/A" ? (
+                      <a href={project.github} target="_blank" rel="norefferer">
+                        Github
+                      </a>
+                    ) : null}
+                  </div>
+                  {project.website !== "N/A" ? (
+                    <div className="project-link">
+                      <li className="fa fa-globe"></li>
+                      <a
+                        href={project.website}
+                        target="_blank"
+                        rel="norefferer"
+                      >
+                        Website
+                      </a>
+                    </div>
                   ) : null}
                 </div>
-                {project.website !== "N/A" ? (
-                  <div className="project-link">
-                    <li className="fa fa-globe"></li>
-                    <a href={project.website} target="_blank" rel="norefferer">
-                      Website
-                    </a>
-                  </div>
-                ) : null}
               </div>
             </div>
           ))}
@@ -86,8 +94,8 @@ const Projects = () => {
       </div>
 
       <div className="mobile-notlandscape">
-          <img src="assets/rotatedevice.gif" />
-          <h2>Please rotate your device for a better experience.</h2>
+        <img src="assets/rotatedevice.gif" />
+        <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>
   );
