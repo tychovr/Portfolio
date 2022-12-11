@@ -26,12 +26,13 @@ const Experience = () => {
                 <h2>{experience.title}</h2>
                 <div className="date">
                   <p>{experience.date_started}</p>
-                  <p className="divider">-</p>
+                  <p className="divider-nonmobile">-</p>
+                  <div className="divider"></div>
                   <p>{experience.date_ended}</p>
                 </div>
               </div>
               <div className="body">
-                <p>{experience.description}</p>
+                <p className="about">{experience.about}</p>
 
                 <p>My responsibilities include:</p>
                 <ul>
@@ -43,6 +44,11 @@ const Experience = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="mobile-notlandscape">
+          <img src="assets/rotatedevice.gif" />
+          <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>
   );
