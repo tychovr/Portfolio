@@ -57,6 +57,11 @@ const Home = () => {
           </div>
         </div>
       </div>
+
+      <div className="mobile-notlandscape">
+          <img src="assets/rotatedevice.gif" />
+          <h2>Please rotate your device for a better experience.</h2>
+      </div>
     </div>
   );
 };
