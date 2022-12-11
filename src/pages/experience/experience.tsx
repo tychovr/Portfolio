@@ -32,6 +32,7 @@ const Experience = () => {
                 </div>
               </div>
               <div className="body">
+
                 <p className="about">{experience.about}</p>
 
                 <p>My responsibilities include:</p>
