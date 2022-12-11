@@ -82,3 +82,27 @@ $sec2-color: rgb(133 255 199 / 0.5);
     }
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .experience-container {
+    display: flex;
+    margin-top: 45%;
+
+    .experience-content {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    h2 {
+      font-size: 150%;
+      color: $text-color;
+      width: 80vw;
+      margin-left: 10vw;
+    }
+  }
+}
