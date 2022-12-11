@@ -51,7 +51,9 @@ $sec2-color: rgb(133 255 199 / 0.5);
         border: 2px solid $btn-color;
         border-radius: 4px;
         padding: 1rem;
+        height: 400px;
         box-shadow: $container-shadow;
+        position: relative;
 
         .project-image {
           img {
@@ -77,52 +79,57 @@ $sec2-color: rgb(133 255 199 / 0.5);
           color: $text-color;
         }
 
-        .project-links {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 1rem;
+        .bottom {
+          position: absolute;
+          bottom: 1rem;
+          width: calc(100% - 2rem);
 
-          .project-link {
-            border: 1px solid $btn-color;
-            border-radius: 4px;
-            color: $btn-color;
-            font-size: 1.2rem;
-            font-weight: 500;
-            font-family: "Space Mono";
-            cursor: pointer;
-            padding: 0.25rem 0.25rem;
-
-            a {
+          .project-links {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            
+            .project-link {
+              border: 1px solid $btn-color;
+              border-radius: 4px;
               color: $btn-color;
-              text-decoration: none;
-              padding: 0.25rem 0.25rem;
-            }
-
-            &:hover {
+              font-size: 1.2rem;
+              font-weight: 500;
+              font-family: "Space Mono";
               cursor: pointer;
-              background-color: $btn-color;
-              color: $bg-color;
+              padding: 0.25rem 0.25rem;
 
               a {
-                background-color: $btn-color;
-                color: $bg-color;
+                color: $btn-color;
+                text-decoration: none;
+                padding: 0.25rem 0.25rem;
               }
 
-              li {
+              &:hover {
+                cursor: pointer;
                 background-color: $btn-color;
                 color: $bg-color;
+
+                a {
+                  background-color: $btn-color;
+                  color: $bg-color;
+                }
+
+                li {
+                  background-color: $btn-color;
+                  color: $bg-color;
+                }
               }
             }
           }
-        }
 
-        .project-tags {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          align-items: center;
-          margin-top: 1rem;
+          .project-tags {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 1rem;
+          }
         }
       }
     }
@@ -137,7 +144,7 @@ $sec2-color: rgb(133 255 199 / 0.5);
   .projects-container {
     .projects-content {
       .projects {
-        grid-template-columns: repeat(auto-fit, 35%);
+        grid-template-columns: repeat(auto-fit, 60%);
         grid-gap: 5vh;
         max-width: 500px;
       }
@@ -145,6 +152,17 @@ $sec2-color: rgb(133 255 199 / 0.5);
   }
 }
 
+@media only screen and (min-width: 900px) and (max-width: 1200px) {
+  .projects-container {
+    .projects-content {
+      .projects {
+        grid-template-columns: repeat(auto-fit, 40%);
+        grid-gap: 5vh;
+        max-width: 800px;
+      }
+    }
+  }
+}
 @media only screen and (max-width: 576px) {
   .projects-container {
     display: flex;
