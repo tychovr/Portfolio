@@ -132,7 +132,7 @@ body {
         }
       }
     }
-    
+
     .hamburger {
       display: none;
       cursor: pointer;
@@ -165,12 +165,11 @@ body {
     }
 
     .navbar {
-
       .hamburger {
         display: block;
         cursor: pointer;
         margin-bottom: 1rem;
-        
+
         .bar {
           display: block;
           margin-top: 5px;
@@ -198,7 +197,7 @@ body {
         background-color: $bg-color;
         width: 100%;
         text-align: center;
-        transition: .3s;
+        transition: 0.3s;
         height: 100vh;
 
         li,
@@ -213,5 +212,11 @@ body {
         z-index: 4;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .navbar-container {
+    display: none;
   }
 }
