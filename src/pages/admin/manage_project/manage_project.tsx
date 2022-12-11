@@ -71,6 +71,7 @@ const ManageProject = () => {
     sass: "#c6538c",
     javascript: "#f0db4f",
     reactjs: "#06206e",
+    typescript: "#3178c6",
     node: "#3c873a",
     firebase: "#ffca28",
     mongodb: "#47a248",
@@ -194,6 +195,7 @@ const ManageProject = () => {
                       <option value="sass">SASS</option>
                       <option value="javascript">JAVASCRIPT</option>
                       <option value="reactjs">REACTJS</option>
+                      <option value="typescript">TYPESCRIPT</option>
                       <option value="node">NODE</option>
                       <option value="firebase">FIREBASE</option>
                       <option value="mongodb">MONGODB</option>
