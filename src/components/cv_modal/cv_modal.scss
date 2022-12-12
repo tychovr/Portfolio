@@ -34,11 +34,12 @@ $sec2-color: rgb(133 255 199 / 0.5);
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 576px) and (max-width: 900px) {
   .cv_modal {
-    margin-top: 40%;
+    margin-top: 10%;
     margin-left: 10%;
     height: 100%;
+    width: 81%;
 
     .pdf_container {
       overflow: auto;
@@ -50,5 +51,15 @@ $sec2-color: rgb(133 255 199 / 0.5);
         display: none;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .cv_modal {
+    display: none;
+  }
+
+  .backdrop {
+    display: none;
   }
 }
