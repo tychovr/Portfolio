@@ -4,6 +4,7 @@ import { useForm, ValidationError } from "@formspree/react";
 import "./contact.scss";
 
 const Contact = () => {
+  const [disabled, setDisabled] = useState(false);
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
@@ -18,6 +19,8 @@ const Contact = () => {
     setEmail('');
     setSubject('');
     setMessage('');
+    console.log(state.succeeded);
+    setDisabled(true);
   };
 
   useEffect(() => {
@@ -65,38 +68,41 @@ const Contact = () => {
             >
               <div className="contact-form-input">
                 <label htmlFor="email">Email</label>
-                <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email}/>
+                <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} required/>
 
                 <ValidationError
                   prefix="Email"
                   field="email"
                   errors={state.errors}
+                  color="red"
                 />
 
                 <label htmlFor="subject">Subject</label>
-                <input type="text" name="subject" id="subject" onChange={(e) => setSubject(e.target.value)} value={subject}/>
+                <input type="text" name="subject" id="subject" onChange={(e) => setSubject(e.target.value)} value={subject} required/>
 
                 <ValidationError
                   prefix="Subject"
                   field="subject"
                   errors={state.errors}
+                  color="red"
                 />
 
                 <label htmlFor="message">Message</label>
-                <textarea name="message" id="message" rows={9} cols={50} maxLength={200} onChange={(e) => setMessage(e.target.value)} value={message}>
+                <textarea name="message" id="message" rows={9} cols={50} maxLength={200} onChange={(e) => setMessage(e.target.value)} value={message} required>
                 </textarea>
 
                 <ValidationError
                   prefix="Message"
                   field="message"
                   errors={state.errors}
+                  color="red"
                 />
 
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   type="submit"
-                  disabled={state.submitting}
+                  disabled={disabled}
                 >
                   Send
                 </motion.button>
