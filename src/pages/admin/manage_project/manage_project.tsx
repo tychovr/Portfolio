@@ -71,6 +71,7 @@ const ManageProject = () => {
     sass: "#c6538c",
     javascript: "#f0db4f",
     reactjs: "#06206e",
+    typescript: "#3178c6",
     node: "#3c873a",
     firebase: "#ffca28",
     mongodb: "#47a248",
@@ -106,6 +107,7 @@ const ManageProject = () => {
     if (!localStorage.getItem("user")) {
       navigate("/admin/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -119,6 +121,7 @@ const ManageProject = () => {
       active: active,
     });
     console.log(project);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, about, image, github, website, tags, active]);
 
   return (
@@ -194,6 +197,7 @@ const ManageProject = () => {
                       <option value="sass">SASS</option>
                       <option value="javascript">JAVASCRIPT</option>
                       <option value="reactjs">REACTJS</option>
+                      <option value="typescript">TYPESCRIPT</option>
                       <option value="node">NODE</option>
                       <option value="firebase">FIREBASE</option>
                       <option value="mongodb">MONGODB</option>
@@ -212,7 +216,7 @@ const ManageProject = () => {
                   {project.github !== "N/A" ? (
                     <div className="project-link">
                       <li className="fa fa-github"></li>
-                      <a href={project.github} target="_blank" rel="norefferer">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
                         Github
                       </a>
                     </div>
@@ -220,7 +224,7 @@ const ManageProject = () => {
                   {project.website !== "N/A" ? (
                     <div className="project-link">
                       <li className="fa fa-globe"></li>
-                      <a href={project.website} target="_blank" rel="norefferer">
+                      <a href={project.website} target="_blank" rel="noopener noreferrer">
                         Website
                       </a>
                     </div>
