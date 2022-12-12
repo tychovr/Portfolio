@@ -4,7 +4,7 @@ import Tag from "../../components/tag/tag";
 import "./projects.scss";
 
 const Projects = () => {
-  
+
   const [data, setData] = useState<any>([]);
 
   const getProjects = async () => {
@@ -95,7 +95,7 @@ const Projects = () => {
       </div>
 
       <div className="mobile-notlandscape">
-        <img src="assets/rotatedevice.gif" />
+        <img src="assets/rotatedevice.gif" alt="rotate device"/>
         <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>
