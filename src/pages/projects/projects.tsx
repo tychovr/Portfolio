@@ -4,6 +4,7 @@ import Tag from "../../components/tag/tag";
 import "./projects.scss";
 
 const Projects = () => {
+  
   const [data, setData] = useState<any>([]);
 
   const getProjects = async () => {
