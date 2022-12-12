@@ -32,6 +32,7 @@ const Experience = () => {
                 </div>
               </div>
               <div className="body">
+
                 <p className="about">{experience.about}</p>
 
                 <p>My responsibilities include:</p>
@@ -47,7 +48,7 @@ const Experience = () => {
       </div>
 
       <div className="mobile-notlandscape">
-          <img src="assets/rotatedevice.gif" />
+          <img src="assets/rotatedevice.gif" alt="rotate device"/>
           <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>
