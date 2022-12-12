@@ -25,7 +25,7 @@ const NotFound = () => {
       </div>
 
       <div className="mobile-notlandscape">
-          <img src="assets/rotatedevice.gif" />
+          <img src="assets/rotatedevice.gif" alt="rotate device"/>
           <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>
