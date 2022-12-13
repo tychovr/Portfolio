@@ -144,11 +144,9 @@ const ManageExperience = () => {
                   {experience.responsibilities?.map(
                     (responsibility: any, index: any) => (
                       <li
-                        key={responsibility.id}
-                        onClick={(e) => {
-                          experience.responsibilities?.splice(index, 1);
-                          setResponsibilities(experience.responsibilities);
-                          setExperience(experience);
+                        key={index}
+                        onClick={() => {
+                          setResponsibilities(responsibilities.filter((value: any, i: any) => i !== index));
                         }}
                       >
                         {responsibility}
