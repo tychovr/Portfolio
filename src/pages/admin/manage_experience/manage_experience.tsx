@@ -37,6 +37,7 @@ const ManageExperience = () => {
     const ExperienceData = await getExperience(id);
 
     setExperience(ExperienceData?.[0]);
+    setDefaultData(ExperienceData?.[0]);
   };
 
   const addExperienceData = async (e: any) => {
@@ -69,7 +70,6 @@ const ManageExperience = () => {
 
     if (id) {
       getExperienceData();
-      setDefaultData(experience);
     }
 
     if (!id) {
