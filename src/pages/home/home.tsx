@@ -17,7 +17,7 @@ const Home = () => {
         <div className="home">
           <div className="home-text">
             <h3>WELCOME TO MY PORTFOLIO</h3>
-            <p className="home-typewriter">
+            <div className="home-typewriter">
               <Typewriter
                 options={{
                   strings: [
@@ -30,7 +30,8 @@ const Home = () => {
                   delay: 75,
                 }}
               />
-            </p>
+            </div>
+
             <div className="home-links">
               <div className="home-link">
                 <motion.button
@@ -38,7 +39,7 @@ const Home = () => {
                   whileTap={{ scale: 0.9 }}
                   onClick={() => navigate("/projects")}
                 >
-                  <li className="fa fa-briefcase" /> 
+                  <li className="fa fa-briefcase" />
                   View Projects
                 </motion.button>
               </div>
@@ -59,8 +60,8 @@ const Home = () => {
       </div>
 
       <div className="mobile-notlandscape">
-          <img src="assets/rotatedevice.gif" alt="rotate device"/>
-          <h2>Please rotate your device for a better experience.</h2>
+        <img src="assets/rotatedevice.gif" alt="rotate device" />
+        <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>
   );
