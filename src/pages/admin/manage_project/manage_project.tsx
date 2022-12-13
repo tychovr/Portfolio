@@ -36,6 +36,7 @@ const ManageProject = () => {
     const projectData = await getProject(id);
 
     setProject(projectData?.[0]);
+    setDefaultData(projectData?.[0]);
   };
 
   const addProjectData = async (e: any) => {
@@ -89,7 +90,6 @@ const ManageProject = () => {
 
     if (id) {
       getProjectData();
-      setDefaultData(project);
     }
 
     if (!id) {
