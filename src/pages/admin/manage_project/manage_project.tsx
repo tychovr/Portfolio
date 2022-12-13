@@ -36,6 +36,7 @@ const ManageProject = () => {
     const projectData = await getProject(id);
 
     setProject(projectData?.[0]);
+    setDefaultData(projectData?.[0]);
   };
 
   const addProjectData = async (e: any) => {
@@ -89,7 +90,6 @@ const ManageProject = () => {
 
     if (id) {
       getProjectData();
-      setDefaultData(project);
     }
 
     if (!id) {
@@ -158,7 +158,7 @@ const ManageProject = () => {
                     <div
                       className="project-tag"
                       onClick={() => {
-                        setTags(tags.splice(index, 1));
+                        setTags(tags.filter((value: any, i:any) => i !== index));
                       }}
                       key={tag}
                     >
