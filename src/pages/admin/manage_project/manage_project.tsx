@@ -158,7 +158,7 @@ const ManageProject = () => {
                     <div
                       className="project-tag"
                       onClick={() => {
-                        setTags(tags.splice(index, 1));
+                        setTags(tags.filter((value: any, i:any) => i !== index));
                       }}
                       key={tag}
                     >
