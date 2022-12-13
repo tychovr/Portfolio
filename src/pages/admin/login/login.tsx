@@ -21,6 +21,7 @@ const Admin = () => {
     if (localStorage.getItem("user")) {
       navigate(-1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
