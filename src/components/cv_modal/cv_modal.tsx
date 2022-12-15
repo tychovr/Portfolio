@@ -7,7 +7,7 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 import Backdrop from "../backdrop/backdrop";
 import "./cv_modal.scss";
 
-const pdfFile = new URL("./cv.pdf", import.meta.url).toString();
+const pdfFile = new URL("../../../public/assets/cv.pdf", import.meta.url).toString();
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const dropIn = {
