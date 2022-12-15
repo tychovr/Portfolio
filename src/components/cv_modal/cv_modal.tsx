@@ -7,7 +7,7 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 import Backdrop from "../backdrop/backdrop";
 import "./cv_modal.scss";
 
-const pdfFile = new URL("./cv.pdf", import.meta.url).toString();
+const pdfFile = new URL("../../../public/assets/cv.pdf", import.meta.url).toString();
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const dropIn = {
@@ -34,7 +34,6 @@ const options = {
 const CVModal = ({ handleClose }: any) => {
   const [file] = useState(pdfFile);
   const [numPages, setNumPages] = useState(0);
-  const [pageNumber] = useState(1);
 
   return ReactDom.createPortal(
     <Backdrop onClick={handleClose}>
