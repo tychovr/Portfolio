@@ -18,12 +18,6 @@ const dropIn = {
   visible: {
     y: "0",
     opacity: 1,
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 25,
-      stiffness: 500,
-    },
   },
   exit: {
     y: "100vh",
@@ -39,6 +33,7 @@ const options = {
 
 const CVModal = ({ handleClose }: any) => {
   const [file] = useState(pdfFile);
+  const [numPages, setNumPages] = useState(0);
   const [pageNumber] = useState(1);
 
   return ReactDom.createPortal(
@@ -53,13 +48,22 @@ const CVModal = ({ handleClose }: any) => {
         exit="exit"
       >
         <div className="pdf_container">
-          <Document file={file} options={options} className="pdf_document">
-            <Page pageNumber={pageNumber} />
+          <Document
+            file={file}
+            options={options}
+            onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+            className="pdf_document"
+          >
+            {Array.apply(null, Array(numPages))
+              .map((x, i) => i + 1)
+              .map((page) => (
+                <Page pageNumber={page} />
+              ))}
           </Document>
         </div>
       </motion.div>
     </Backdrop>,
-    document.getElementById('portal') as HTMLElement
+    document.getElementById("portal") as HTMLElement
   );
 };
 
