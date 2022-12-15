@@ -4,6 +4,7 @@ import Tag from "../../components/tag/tag";
 import "./projects.scss";
 
 const Projects = () => {
+
   const [data, setData] = useState<any>([]);
 
   const getProjects = async () => {
@@ -69,7 +70,7 @@ const Projects = () => {
                   <div className="project-link">
                     <li className="fa fa-github"></li>
                     {project.github !== "N/A" ? (
-                      <a href={project.github} target="_blank" rel="norefferer">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
                         Github
                       </a>
                     ) : null}
@@ -80,7 +81,7 @@ const Projects = () => {
                       <a
                         href={project.website}
                         target="_blank"
-                        rel="norefferer"
+                        rel="noopener noreferrer"
                       >
                         Website
                       </a>
@@ -94,7 +95,7 @@ const Projects = () => {
       </div>
 
       <div className="mobile-notlandscape">
-        <img src="assets/rotatedevice.gif" />
+        <img src="assets/rotatedevice.gif" alt="rotate device"/>
         <h2>Please rotate your device for a better experience.</h2>
       </div>
     </div>

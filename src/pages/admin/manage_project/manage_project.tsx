@@ -36,6 +36,7 @@ const ManageProject = () => {
     const projectData = await getProject(id);
 
     setProject(projectData?.[0]);
+    setDefaultData(projectData?.[0]);
   };
 
   const addProjectData = async (e: any) => {
@@ -89,7 +90,6 @@ const ManageProject = () => {
 
     if (id) {
       getProjectData();
-      setDefaultData(project);
     }
 
     if (!id) {
@@ -107,6 +107,7 @@ const ManageProject = () => {
     if (!localStorage.getItem("user")) {
       navigate("/admin/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -120,6 +121,7 @@ const ManageProject = () => {
       active: active,
     });
     console.log(project);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [title, about, image, github, website, tags, active]);
 
   return (
@@ -156,7 +158,7 @@ const ManageProject = () => {
                     <div
                       className="project-tag"
                       onClick={() => {
-                        setTags(tags.splice(index, 1));
+                        setTags(tags.filter((value: any, i:any) => i !== index));
                       }}
                       key={tag}
                     >
@@ -214,7 +216,7 @@ const ManageProject = () => {
                   {project.github !== "N/A" ? (
                     <div className="project-link">
                       <li className="fa fa-github"></li>
-                      <a href={project.github} target="_blank" rel="norefferer">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer">
                         Github
                       </a>
                     </div>
@@ -222,7 +224,7 @@ const ManageProject = () => {
                   {project.website !== "N/A" ? (
                     <div className="project-link">
                       <li className="fa fa-globe"></li>
-                      <a href={project.website} target="_blank" rel="norefferer">
+                      <a href={project.website} target="_blank" rel="noopener noreferrer">
                         Website
                       </a>
                     </div>
