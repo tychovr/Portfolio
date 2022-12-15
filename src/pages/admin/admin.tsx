@@ -37,6 +37,7 @@ const Admin = () => {
     sass: "#c6538c",
     javascript: "#f0db4f",
     reactjs: "#06206e",
+    typescript: "#3178c6",
     node: "#3c873a",
     firebase: "#ffca28",
     mongodb: "#47a248",
