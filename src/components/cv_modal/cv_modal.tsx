@@ -34,7 +34,6 @@ const options = {
 const CVModal = ({ handleClose }: any) => {
   const [file] = useState(pdfFile);
   const [numPages, setNumPages] = useState(0);
-  const [pageNumber] = useState(1);
 
   return ReactDom.createPortal(
     <Backdrop onClick={handleClose}>
