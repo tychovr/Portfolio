@@ -37,6 +37,7 @@ const ManageExperience = () => {
     const ExperienceData = await getExperience(id);
 
     setExperience(ExperienceData?.[0]);
+    setDefaultData(ExperienceData?.[0]);
   };
 
   const addExperienceData = async (e: any) => {
@@ -69,7 +70,6 @@ const ManageExperience = () => {
 
     if (id) {
       getExperienceData();
-      setDefaultData(experience);
     }
 
     if (!id) {
@@ -144,11 +144,9 @@ const ManageExperience = () => {
                   {experience.responsibilities?.map(
                     (responsibility: any, index: any) => (
                       <li
-                        key={responsibility.id}
-                        onClick={(e) => {
-                          experience.responsibilities?.splice(index, 1);
-                          setResponsibilities(experience.responsibilities);
-                          setExperience(experience);
+                        key={index}
+                        onClick={() => {
+                          setResponsibilities(responsibilities.filter((value: any, i: any) => i !== index));
                         }}
                       >
                         {responsibility}

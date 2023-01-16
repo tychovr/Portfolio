@@ -37,6 +37,7 @@ const Admin = () => {
     sass: "#c6538c",
     javascript: "#f0db4f",
     reactjs: "#06206e",
+    typescript: "#3178c6",
     node: "#3c873a",
     firebase: "#ffca28",
     mongodb: "#47a248",
@@ -58,6 +59,7 @@ const Admin = () => {
     if (!localStorage.getItem("user")) {
       navigate("/admin/login");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -77,7 +79,7 @@ const Admin = () => {
               </thead>
               <tbody>
                 {allProjects.map((project: any) => (
-                  <tr>
+                  <tr key={project.id}>
                     <td>{project.title}</td>
                     <td className="tags">
                       {project.tags.map((tag: any) => (
@@ -155,7 +157,7 @@ const Admin = () => {
                       <ul>
                         {experience.responsibilities.map(
                           (responsibility: any) => (
-                            <li>{responsibility}</li>
+                            <li key={responsibility}>{responsibility}</li>
                           )
                         )}
                       </ul>

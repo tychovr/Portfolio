@@ -21,6 +21,7 @@ const Admin = () => {
     if (localStorage.getItem("user")) {
       navigate(-1);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -33,10 +34,11 @@ const Admin = () => {
               <div className="login-input">
                 <label htmlFor="email">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   id="email"
                   value={email}
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   onChange={(e) => setEmail(e.target.value)}
                 />
 
@@ -46,6 +48,7 @@ const Admin = () => {
                   name="password"
                   id="password"
                   value={password}
+                  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                   onChange={(e) => setPassword(e.target.value)}
                 />
 

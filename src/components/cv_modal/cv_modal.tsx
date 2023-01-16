@@ -7,7 +7,10 @@ import "react-pdf/dist/esm/Page/TextLayer.css";
 import Backdrop from "../backdrop/backdrop";
 import "./cv_modal.scss";
 
-const pdfFile = new URL("./cv.pdf", import.meta.url).toString();
+const pdfFile = new URL(
+  "../../../public/assets/cv.pdf",
+  import.meta.url
+).toString();
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const dropIn = {
@@ -18,12 +21,6 @@ const dropIn = {
   visible: {
     y: "0",
     opacity: 1,
-    transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 25,
-      stiffness: 500,
-    },
   },
   exit: {
     y: "100vh",
@@ -39,27 +36,53 @@ const options = {
 
 const CVModal = ({ handleClose }: any) => {
   const [file] = useState(pdfFile);
-  const [pageNumber] = useState(1);
+  const [numPages, setNumPages] = useState(0);
 
   return ReactDom.createPortal(
     <Backdrop onClick={handleClose}>
-      <motion.div
-        drag
-        onClick={(e) => e.stopPropagation()}
-        className="cv_modal"
-        variants={dropIn}
-        initial="hidden"
-        animate="visible"
-        exit="exit"
-      >
-        <div className="pdf_container">
-          <Document file={file} options={options} className="pdf_document">
-            <Page pageNumber={pageNumber} />
-          </Document>
+      <div className="cv_modal-container">
+        <motion.div
+          drag
+          onClick={(e) => e.stopPropagation()}
+          className="cv_modal"
+          variants={dropIn}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+        >
+          <div className="pdf_container">
+            <Document
+              file={file}
+              options={options}
+              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+              className="pdf_document"
+            >
+              {Array.apply(null, Array(numPages))
+                .map((x, i) => i + 1)
+                .map((page) => (
+                  <Page pageNumber={page} />
+                ))}
+            </Document>
+          </div>
+        </motion.div>
+        <div
+          className="download_cv"
+          onClick={() => {
+            const link = document.createElement("a");
+            link.setAttribute("href", file);
+            link.setAttribute("download", "Tycho's CV.pdf");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+        >
+          <li className="fa fa-download">
+            <p>Download</p>
+          </li>
         </div>
-      </motion.div>
+      </div>
     </Backdrop>,
-    document.getElementById('portal') as HTMLElement
+    document.getElementById("portal") as HTMLElement
   );
 };
 
